@@ -30,26 +30,49 @@ const counting1 = setInterval (
 
 // timer 30 secondi
 const timer2 = document.getElementById("mytimer2");
-let seconds2 = 2;
+let seconds2 = 30;
 
 setTimeout(myTimer2,6000);
+
+const userNums = document.getElementById("userNums");
 
 function myTimer2 () {
     const counting2 = setInterval (
         function () {
+            const result = document.getElementById("result");
             timer2.innerHTML = seconds2;
             if (seconds2 === 0) {
                 clearInterval(counting2);
-                const firstQ = parseInt(prompt("Qual era il primo numero?"));
-                const secondQ = parseInt(prompt("Qual era il secondo numero?"));
-                const thirdQ = parseInt(prompt("Qual era il terzo numero?"));
-                const fourthQ = parseInt(prompt("Qual era il quarto numero?"));
-                const fifthQ = parseInt(prompt("Qual era il quinto numero?"));
+
+                const a2 = [];
+                for(i = 0; i < 5; i++) {
+                    numberUser = parseInt(prompt("Inserisci un numero."));
+                    console.log(numberUser)
+                    
+                    if (numbers.includes(numberUser)) {
+                        a2.push(numberUser);
+                    }
+                }             
+                
+                // Ammontare di numeri indovinati
+                if(a2.length == 5) {
+                    result.append("Hai indovinato tutti i numeri.");
+                } else if(a2.length == 1) {
+                    result.append("Hai indovinato un numero.");
+                } else if(a2.length == 2) {
+                    result.append("Hai indovinato due numeri.");
+                } else if(a2.length == 3) {
+                    result.append("Hai indovinato tre numeri.");
+                } else if(a2.length == 4) {
+                    result.append("Hai indovinato quattro numeri.");
+                } else {
+                    result.append("Non hai indovinato nessun numero.");
+                }
+
+                console.log(a2);
             } else {
                 seconds2--;
             }
         }
     , 1000);
 }
-
-// stampare in pagina quanti numeri erano corretti
